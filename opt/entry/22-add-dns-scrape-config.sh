@@ -8,8 +8,6 @@ for CFG in $(echo ${PROMETHEUS_DNS_SCRAPE_LIST} |sed -e 's/,/ /g');do
   PORT=$(echo ${CFG} |/usr/bin/awk -F: '{print $3}')
   PATH=$(echo ${CFG} |/usr/bin/awk -F: '{print $4}')
   echo """  - job_name: '${NAME}'
-    scrape_interval: 5s
-    scrape_timeout: 5s
     metrics_path: ${PATH}
     scheme: http
     dns_sd_configs:
