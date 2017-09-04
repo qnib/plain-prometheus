@@ -5,7 +5,8 @@ ARG PROM_URL=https://github.com/prometheus/prometheus/releases/download
 ARG PROM_VER=1.7.1
 ARG PROM_ARCH=linux-amd64
 LABEL prometheus.version=${PROM_VER}
-RUN wget -qO- ${PROM_URL}/v${PROM_VER}/prometheus-${PROM_VER}.${PROM_ARCH}.tar.gz |tar xfz - -C /opt/ \
+RUN apk --no-cache add wget \
+ && wget -qO- ${PROM_URL}/v${PROM_VER}/prometheus-${PROM_VER}.${PROM_ARCH}.tar.gz |tar xfz - -C /opt/ \
  && mv /opt/prometheus-${PROM_VER}.${PROM_ARCH}/ /opt/prometheus
 COPY opt/qnib/prometheus/prometheus.yml /opt/qnib/prometheus/
 COPY opt/entry/*.sh /opt/entry/

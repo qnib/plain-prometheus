@@ -2,11 +2,11 @@
 
 ## TODO: Rewrite in GOLANG
 
-for CFG in ${PROMETHEUS_DNS_SCRAPE_LIST};do
-  NAME=$(echo ${CFG} |awk -F: '{print $1}')
-  SERVICE=$(echo ${CFG} |awk -F: '{print $2}')
-  PORT=$(echo ${CFG} |awk -F: '{print $3}')
-  PATH=$(echo ${CFG} |awk -F: '{print $4}')
+for CFG in $(echo ${PROMETHEUS_DNS_SCRAPE_LIST} |sed -e 's/,/ /g');do
+  NAME=$(echo ${CFG} |/usr/bin/awk -F: '{print $1}')
+  SERVICE=$(echo ${CFG} |/usr/bin/awk -F: '{print $2}')
+  PORT=$(echo ${CFG} |/usr/bin/awk -F: '{print $3}')
+  PATH=$(echo ${CFG} |/usr/bin/awk -F: '{print $4}')
   echo """  - job_name: '${NAME}'
     scrape_interval: 5s
     scrape_timeout: 5s
