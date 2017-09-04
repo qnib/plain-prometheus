@@ -8,7 +8,7 @@ LABEL prometheus.version=${PROM_VER}
 RUN wget -qO- ${PROM_URL}/v${PROM_VER}/prometheus-${PROM_VER}.${PROM_ARCH}.tar.gz |tar xfz - -C /opt/ \
  && mv /opt/prometheus-${PROM_VER}.${PROM_ARCH}/ /opt/prometheus
 COPY opt/qnib/prometheus/prometheus.yml /opt/qnib/prometheus/
-COPY opt/entry/*.sh /opt/entry
+COPY opt/entry/*.sh /opt/entry/
 RUN adduser -s /sbin/nologin -D prometheus
 CMD ENTRY_USER=prometheus
 VOLUME ["/data/prometheus"]
