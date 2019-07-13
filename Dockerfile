@@ -2,7 +2,7 @@ ARG DOCKER_REGISTRY=docker.io
 FROM ${DOCKER_REGISTRY}/qnib/alplain-init
 
 ARG PROM_URL=https://github.com/prometheus/prometheus/releases/download
-ARG PROM_VER=2.3.1
+ARG PROM_VER=2.11.1
 ARG PROM_ARCH=linux-amd64
 LABEL prometheus.version=${PROM_VER}
 COPY opt/qnib/prometheus/prometheus.yml /opt/qnib/prometheus/
